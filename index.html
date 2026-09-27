@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craft Area — Handmade with Love</title>
+  <meta name="description" content="Handmade and homemade woolen creations, crafted with care." />
+
+  <style>
+    :root{
+      --cream:#f8f0df;
+      --cream-2:#fffaf0;
+      --brown:#49352a;
+      --brown-2:#6b4d3c;
+      --accent:#a35f3f;
+      --accent-dark:#7f452d;
+      --green:#56664b;
+      --line:rgba(73,53,42,.14);
+      --shadow:0 18px 50px rgba(73,53,42,.12);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--cream);
+      color:var(--brown);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{display:block;width:100%;object-fit:cover}
+
+    .container{width:min(1160px,92%);margin:auto}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(248,240,223,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+
+    nav{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:Georgia,serif;
+      font-size:1.35rem;
+      font-weight:700;
+      letter-spacing:-.3px;
+    }
+
+    .brand-mark{
+      width:40px;height:40px;border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--brown);
+      color:var(--cream);
+      font-size:19px;
+      box-shadow:0 7px 18px rgba(73,53,42,.18);
+    }
+
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a{
+      font-size:.93rem;
+      color:var(--brown-2);
+      transition:.25s;
+    }
+    .nav-links a:hover{color:var(--accent)}
+
+    .nav-btn{
+      padding:10px 17px;
+      border-radius:999px;
+      background:var(--brown);
+      color:white !important;
+    }
+
+    .menu{display:none;border:0;background:none;font-size:25px;color:var(--brown)}
+
+    .hero{
+      min-height:calc(100vh - 76px);
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:70px;
+      padding:70px 0 90px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 13px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--green);
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+      background:rgba(255,250,240,.45);
+    }
+
+    .eyebrow span{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+    h1{
+      font-family:Georgia,serif;
+      font-size:clamp(3.2rem,6.5vw,6.4rem);
+      line-height:.94;
+      letter-spacing:-.055em;
+      max-width:720px;
+    }
+
+    h1 em{font-weight:400;color:var(--accent)}
+
+    .hero-copy{
+      max-width:570px;
+      margin-top:27px;
+      color:var(--brown-2);
+      font-size:1.08rem;
+    }
+
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:31px}
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      padding:13px 20px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.94rem;
+      transition:.25s;
+    }
+    .btn-primary{background:var(--brown);color:white}
+    .btn-primary:hover{transform:translateY(-2px);background:#35251d}
+    .btn-secondary{border:1px solid var(--line);background:rgba(255,250,240,.5)}
+    .btn-secondary:hover{background:var(--cream-2)}
+
+    .hero-visual{position:relative}
+    .hero-photo{
+      height:590px;
+      border-radius:35% 35% 20px 20px;
+      box-shadow:var(--shadow);
+      border:8px solid rgba(255,250,240,.72);
+    }
+    .floating-card{
+      position:absolute;
+      left:-35px;
+      bottom:35px;
+      width:190px;
+      padding:18px;
+      background:var(--cream-2);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+    .floating-card strong{display:block;font-family:Georgia,serif;font-size:1.25rem}
+    .floating-card small{color:var(--brown-2)}
+
+    section{padding:100px 0}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:30px;
+      margin-bottom:38px;
+    }
+    .kicker{
+      color:var(--accent);
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:800;
+      margin-bottom:9px;
+    }
+    h2{
+      font-family:Georgia,serif;
+      font-size:clamp(2.3rem,4vw,4rem);
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+    .section-head p{max-width:410px;color:var(--brown-2)}
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:25px;
+    }
+    .product{
+      background:var(--cream-2);
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(73,53,42,.05);
+    }
+    .product-img{height:410px}
+    .product-info{padding:23px}
+    .product-info h3{font-family:Georgia,serif;font-size:1.65rem}
+    .product-info p{color:var(--brown-2);margin:7px 0 18px}
+    .tag{
+      display:inline-block;
+      font-size:.75rem;
+      padding:5px 10px;
+      border-radius:999px;
+      background:#efe1c9;
+      color:var(--brown-2);
+      font-weight:700;
+    }
+
+    .story{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:70px;
+      align-items:center;
+    }
+    .story-box{
+      background:var(--brown);
+      color:var(--cream);
+      border-radius:32px;
+      padding:48px;
+      position:relative;
+      overflow:hidden;
+    }
+    .story-box:after{
+      content:"";
+      position:absolute;
+      width:190px;height:190px;
+      border:1px solid rgba(248,240,223,.18);
+      border-radius:50%;
+      right:-70px;bottom:-80px;
+    }
+    .story-box h3{font-family:Georgia,serif;font-size:2.5rem;line-height:1.05}
+    .story-box p{margin-top:20px;color:#e9dcc8}
+    .story-text p{color:var(--brown-2);margin:17px 0}
+    .values{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:25px
+    }
+    .value{padding:18px;border:1px solid var(--line);border-radius:18px}
+    .value b{display:block;font-family:Georgia,serif;font-size:1.1rem;margin-bottom:5px}
+    .value span{font-size:.85rem;color:var(--brown-2)}
+
+    .gallery{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:20px;
+    }
+    .gallery img{height:280px;border-radius:25px}
+    .gallery .large{height:580px}
+    .gallery-right{display:grid;gap:20px}
+
+    .contact{
+      background:var(--brown);
+      color:var(--cream);
+      border-radius:35px;
+      padding:65px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:40px;
+    }
+    .contact p{color:#e9dcc8;max-width:530px;margin-top:12px}
+    .contact .btn{background:var(--cream);color:var(--brown);white-space:nowrap}
+
+    footer{
+      padding:35px 0;
+      border-top:1px solid var(--line);
+      color:var(--brown-2);
+      font-size:.88rem;
+    }
+    .footer-row{display:flex;justify-content:space-between;gap:20px}
+
+    @media(max-width:850px){
+      .nav-links{display:none}
+      .menu{display:block}
+      .hero{grid-template-columns:1fr;gap:45px;padding-top:45px}
+      .hero-photo{height:470px}
+      .floating-card{left:15px}
+      .story{grid-template-columns:1fr}
+      .products{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .gallery .large{height:420px}
+      .contact{padding:40px 28px;display:block}
+      .contact .btn{margin-top:25px}
+    }
+
+    @media(max-width:560px){
+      section{padding:70px 0}
+      h1{font-size:3.5rem}
+      .hero-photo{height:390px}
+      .product-img{height:330px}
+      .values{grid-template-columns:1fr}
+      .story-box{padding:30px}
+      .footer-row{display:block}
+      .footer-row div+div{margin-top:10px}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#">
+          <span class="brand-mark">✦</span>
+          <span>Craft Area</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#shop">Shop</a>
+          <a href="#story">Our Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact" class="nav-btn">Order / Enquire</a>
+        </div>
+
+        <button class="menu" onclick="alert('Use the links above to explore the website.')">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <div class="eyebrow"><span></span> Handmade • Homemade • Heartmade</div>
+        <h1>Little pieces of <em>warmth</em>, made by hand.</h1>
+        <p class="hero-copy">
+          Thoughtfully handmade woolen creations, made in small batches with patience,
+          creativity and a whole lot of love.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#shop">Explore creations →</a>
+          <a class="btn btn-secondary" href="#story">Our story</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img class="hero-photo" src="assets/product-1.jpeg" alt="Colorful handmade woolen creation">
+        <div class="floating-card">
+          <strong>Made by hand.</strong>
+          <small>Every piece is a little different — and that's the charm.</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Featured creations</div>
+            <h2>Made slowly.<br>Made beautifully.</h2>
+          </div>
+          <p>From playful wool art to useful handmade pieces, every creation carries the character of its maker.</p>
+        </div>
+
+        <div class="products">
+          <article class="product">
+            <img class="product-img" src="assets/product-1.jpeg" alt="Colorful handmade wool artwork">
+            <div class="product-info">
+              <span class="tag">Handmade Wool Art</span>
+              <h3>Colorful Wool Creation</h3>
+              <p>A bright, tactile piece made from colorful wool — perfect for adding personality to a space.</p>
+              <a class="btn btn-primary" href="#contact">Enquire about this →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <img class="product-img" src="assets/product-2.jpeg" alt="Handmade yellow wool flower">
+            <div class="product-info">
+              <span class="tag">Handmade Decor</span>
+              <h3>Sunny Wool Flower</h3>
+              <p>A cheerful handmade flower with playful details, crafted to bring a little warmth anywhere.</p>
+              <a class="btn btn-primary" href="#contact">Enquire about this →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container story">
+        <div class="story-box">
+          <div class="kicker" style="color:#e5a27f">Why handmade?</div>
+          <h3>Because the little imperfections make it personal.</h3>
+          <p>
+            Handmade isn't about making everything identical. It's about putting time,
+            thought and personality into every single piece.
+          </p>
+        </div>
+
+        <div class="story-text">
+          <div class="kicker">Our story</div>
+          <h2>A small start-up with a handmade heart.</h2>
+          <p>
+            We create homemade and handmade woolen products designed to feel warm,
+            cheerful and personal. Each item is made with care rather than mass-produced.
+          </p>
+          <p>
+            Whether you're looking for something for yourself or a thoughtful handmade
+            gift, our creations are made to feel special.
+          </p>
+
+          <div class="values">
+            <div class="value"><b>Handmade</b><span>Created by hand, not a factory line.</span></div>
+            <div class="value"><b>Small Batch</b><span>Made in limited quantities with care.</span></div>
+            <div class="value"><b>Personal</b><span>Custom ideas are welcome.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">A glimpse</div>
+            <h2>Made to make<br>you smile.</h2>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <img class="large" src="assets/product-1.jpeg" alt="Colorful wool handmade piece">
+          <div class="gallery-right">
+            <img src="assets/product-2.jpeg" alt="Yellow handmade wool flower">
+            <div style="border:1px solid var(--line);border-radius:25px;padding:28px;background:rgba(255,250,240,.5)">
+              <div class="kicker">Custom orders</div>
+              <h3 style="font-family:Georgia,serif;font-size:1.8rem;line-height:1.15">Have an idea in mind?</h3>
+              <p style="margin-top:8px;color:var(--brown-2)">Tell us what you'd like made and we'll see what we can create together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <div>
+            <div class="kicker" style="color:#e5a27f">Let's create something</div>
+            <h2>Want to place an order?</h2>
+            <p>
+              Send us a message with the product you're interested in, or tell us your
+              custom idea. We'll get back to you with the details.
+            </p>
+          </div>
+
+          <!-- Replace the number below with the business WhatsApp number. -->
+          <a class="btn" href="https://wa.me/918009077293" target="_blank" rel="noopener">
+            Message on WhatsApp →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Craft Area. Handmade with love.</div>
+      <div>Instagram: <a href="https://www.instagram.com/craft.area_22/" target="_blank" rel="noopener">@craft.area_22</a> • WhatsApp</div>
+    </div>
+  </footer>
+</body>
+</html>
